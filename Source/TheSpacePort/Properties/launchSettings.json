@@ -3,7 +3,6 @@
     "TheSpacePort": {
       "commandName": "Project",
       "environmentVariables": {
-        "Key": "Value",
         "SettingEnvironment": "dev"
       }
     }
