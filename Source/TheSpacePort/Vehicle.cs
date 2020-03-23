@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TheSpacePort
 {
-    class Vehicle
+    public class Vehicle
     {
         public int VehicleID { get; set; }
         public int Length { get; set; }
