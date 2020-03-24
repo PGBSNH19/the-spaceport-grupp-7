@@ -6,6 +6,7 @@ namespace TheSpacePort
 {
     public class SpacePort
     {
+        public int SpacePortID { get; set; }
         public bool IsOpen { get; set; }
         public int AvailableParking { get; set; }
 
