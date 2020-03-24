@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TheSpacePort
 {
-    internal class SwAPIreponse
+    internal class SwapiResponse
     {
 
         public int Count { get; set; }

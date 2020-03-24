@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace TheSpacePort
 {
@@ -6,7 +7,17 @@ namespace TheSpacePort
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Space!");
+            var EnvironmentName = Environment.GetEnvironmentVariable("SettingEnvironment");
+
+
+            Console.WriteLine($"Hello {EnvironmentName} Space!");
+
+            MyContext myContext2 = new MyContext();
+            var x = myContext2.parkings.ToList();
+
+            API.GetTraveler();
+                
+            Console.ReadKey();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace TheSpacePort
 
         }
 
-        static void ProsessPaiment()
+        static void ProcessPayment()
         {
 
         }

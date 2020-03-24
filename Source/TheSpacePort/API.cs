@@ -9,21 +9,17 @@ namespace TheSpacePort
     public class API
     {
 
-        static void GetTraveler()
+        public static void GetTraveler()
         {
-
-            var client = new RestClient("https://swapi.co/api/%22");
+            var client = new RestClient("https://swapi.co/api/");
             var request = new RestRequest("people/", DataFormat.Json);
-            var peopleResponse = client.Get<SwAPIreponse>(request);
+            var peopleResponse = client.Get<SwapiResponse>(request);
 
-            Console.WriteLine(peopleResponse.Data.Count);
+            //Console.WriteLine(peopleResponse.Data.Count);
             foreach (var p in peopleResponse.Data.Results)
             {
                 Console.WriteLine(p.Name);
             }
-
         }
-
-
     }
 }
