@@ -9,17 +9,26 @@ namespace TheSpacePort
     public class API
     {
 
-        public static void GetTraveler()
+        public static IRestResponse<SwapiResponse> GetPersonData(string input)
         {
             var client = new RestClient("https://swapi.co/api/");
-            var request = new RestRequest("people/", DataFormat.Json);
-            var peopleResponse = client.Get<SwapiResponse>(request);
+            var request = new RestRequest(input, DataFormat.Json);
+            var apiResponse = client.Get<SwapiResponse>(request);
+            return apiResponse;
+        }
 
-            //Console.WriteLine(peopleResponse.Data.Count);
-            foreach (var p in peopleResponse.Data.Results)
+        public static bool IsValidPerson(string name)
+        {
+            var response = GetPersonData(($"people/?search={name}"));
+            foreach (var p in response.Data.Results)
             {
-                Console.WriteLine(p.Name);
+                if (p.Name == name)
+                {
+                    return true;
+                }
             }
+            return false;
+
         }
     }
 }

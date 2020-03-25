@@ -7,16 +7,32 @@ namespace TheSpacePort
     {
         static void Main(string[] args)
         {
-            var EnvironmentName = Environment.GetEnvironmentVariable("SettingEnvironment");
 
+        Start:
 
-            Console.WriteLine($"Hello {EnvironmentName} Space!");
+            Console.WriteLine("Hello to the SpacePort!");
+            Console.WriteLine("Please type your name and hit enter");
 
-            MyContext myContext2 = new MyContext();
-            var x = myContext2.parkings.ToList();
+            string traveller = Console.ReadLine();
+            Console.WriteLine($"So you are: {traveller}?");
+            Console.WriteLine("(Y) Yes (N) No");
+            var yesOrNo = Console.ReadKey().Key;
 
-            API.GetTraveler();
-                
+            API api = new API();
+            bool resultOfCheck = false;
+
+            if (yesOrNo == ConsoleKey.Y)
+                resultOfCheck = API.IsValidPerson(traveller);
+
+            else
+                goto Start;
+
+            if (resultOfCheck == true)
+                Console.WriteLine("You were a part of star wars");
+
+            else
+                Console.WriteLine("You were not a part of star wars");
+
             Console.ReadKey();
         }
     }
