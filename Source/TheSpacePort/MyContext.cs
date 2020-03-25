@@ -11,7 +11,7 @@ namespace TheSpacePort
     {
         public DbSet<Parking> parkings { get; set; }
         public DbSet<Person> people { get; set; }
-        public DbSet<Vehicle> vehicles { get; set; }
+        public DbSet<Starship> starships { get; set; }
         public DbSet<SpacePort> spacePorts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

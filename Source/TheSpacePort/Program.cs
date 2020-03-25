@@ -22,13 +22,13 @@ namespace TheSpacePort
 
             API api = new API();
             Person person = new Person();
-            Vehicle vehicle = new Vehicle();
+            Starship starship = new Starship();
 
             if (yesOrNo == ConsoleKey.Y)
             {
                  person = api.GetPerson(traveller);
-                 vehicle = api.GetVehicle(person.Vehicles[0]);
-                Console.WriteLine(vehicle.Name);
+                 starship = api.GetStarship(person.Starships[0]);
+                Console.WriteLine(starship.Name);
             }
 
             else

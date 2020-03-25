@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace TheSpacePort
 {
-    public class SwapiVehicleResponse
+    public class SwapiStarshipResponse
     {
-        public IEnumerable<Vehicle> vehicles { get; set; }
+        public string Name { get; set; }
+        public string Length { get; set; }
 
     }
 }

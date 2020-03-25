@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace TheSpacePort
 {
     public class API
     {
-        public string VehicleURL { get; set; }
+        public string StarshipURL { get; set; }
 
         public static IRestResponse<SwapiPersonResponse> GetPersonData(string input)
         {
@@ -36,26 +37,23 @@ namespace TheSpacePort
 
 
 
-        public static IRestResponse<SwapiVehicleResponse> GetVehicleData(string input)
+        public static IRestResponse<SwapiStarshipResponse> GetStarshipData(string input)
         {
             var client = new RestClient(input);
             var request = new RestRequest("", DataFormat.Json);
-            var apiResponse = client.Get<SwapiVehicleResponse>(request);
-            var starship = JsonConvert.DeserializeObject<Vehicle>(apiResponse.Content);
+            var apiResponse = client.Get<SwapiStarshipResponse>(request);
+                       
             return apiResponse;
         }
 
-        public Vehicle GetVehicle(string vehicleUrl)
+        public Starship GetStarship(string starshipUrl)
         {
-            Vehicle vehicle = new Vehicle();
-            var response = GetVehicleData(vehicleUrl);
-            foreach (var p in response.Data.vehicles)
-            {
+            Starship starship = new Starship();
+            var response = GetStarshipData(starshipUrl);
+            starship.Name = response.Data.Name;
+            starship.Length = Convert.ToDecimal(starship.Length, CultureInfo.InvariantCulture);
 
-                    return vehicle;
-                
-            }
-            return null;
+            return starship;
         }
 
 
