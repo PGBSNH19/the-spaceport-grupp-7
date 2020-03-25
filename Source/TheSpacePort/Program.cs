@@ -22,7 +22,7 @@ namespace TheSpacePort
             bool resultOfCheck = false;
 
             if (yesOrNo == ConsoleKey.Y)
-                resultOfCheck = API.IsValidPerson(traveller);
+                resultOfCheck = api.IsValidPerson(traveller);
 
             else
                 goto Start;
