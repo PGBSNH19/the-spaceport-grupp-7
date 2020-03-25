@@ -9,6 +9,8 @@ namespace TheSpacePort
         public int PersonID { get; set; }
         public string Name { get; set; }
         public int Height { get; set; }
+        public Vehicle vehicle { get; set; }
         public List<string> Vehicles { get; set; }
+        
     }
 }
