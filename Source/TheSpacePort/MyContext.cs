@@ -16,11 +16,11 @@ namespace TheSpacePort
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            //var EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             IConfiguration config = new ConfigurationBuilder()
                   .AddJsonFile("appsettings.json", true, true)
-                  .AddJsonFile($"appsettings.{EnvironmentName}.json", true, true)
+                  .AddJsonFile($"appsettings.Development.json", true, true)
                   .Build();
 
 
