@@ -52,7 +52,6 @@ namespace TheSpacePort
             var response = GetStarshipData(starshipUrl);
             starship.Name = response.Data.Name;
             starship.Length = Convert.ToDecimal(starship.Length, CultureInfo.InvariantCulture);
-
             return starship;
         }
 

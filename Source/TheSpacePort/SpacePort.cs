@@ -9,6 +9,7 @@ namespace TheSpacePort
         public int SpacePortID { get; set; }
         public bool IsOpen { get; set; }
         public int AvailableParking { get; set; }
+        public List<Parking> Parkings { get; set; }
 
 
         static void OpenClose()
@@ -17,6 +18,11 @@ namespace TheSpacePort
         }
 
         static void ProcessPayment()
+        {
+
+        }
+
+        public void CreateParkings()
         {
 
         }
