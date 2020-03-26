@@ -9,7 +9,6 @@ namespace TheSpacePort
         public int StarshipID { get; set; }
         public decimal Length { get; set; }
         public string Name { get; set; }
-        public int PersonID { get; set; }
 
     }
 }

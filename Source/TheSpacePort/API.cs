@@ -11,7 +11,7 @@ namespace TheSpacePort
 {
     public class API
     {
-
+        // Spy: @Group 1, the asynch Task methods
         public string StarshipURL { get; set; }
 
         private static readonly RestClient client = new RestClient("https://swapi.co/api/");
@@ -31,6 +31,8 @@ namespace TheSpacePort
 
             if(data.Results[0].Name == name)
                 return data.Results[0];
+            else
+                Console.WriteLine("Sorry, you're not in any Star Wars movie... This is not the parking you're looking for!.");
 
             return null;
         }
@@ -53,48 +55,5 @@ namespace TheSpacePort
 
             return starship;
         }
-
-
-        //public static IRestResponse<SwapiStarshipResponse> GetStarshipData(string input)
-        //{
-        //    var client = new RestClient(input);
-        //    var request = new RestRequest("", DataFormat.Json);
-        //    var apiResponse = client.Get<SwapiStarshipResponse>(request);
-
-        //    return apiResponse;
-        //}
-
-        //public Starship GetStarship(string starshipUrl)
-        //{
-        //    Starship starship = new Starship();
-        //    var response = GetStarshipData(starshipUrl);
-        //    starship.Name = response.Data.Name;
-        //    starship.Length = Convert.ToDecimal(response.Data.Length, CultureInfo.InvariantCulture);
-        //    return starship;
-        //}
-
-        //public static IRestResponse<SwapiPersonResponse> GetPersonData(string input)
-        //{
-        //    var client = new RestClient("https://swapi.co/api/");
-        //    var request = new RestRequest(input, DataFormat.Json);
-        //    var apiResponse = client.Get<SwapiPersonResponse>(request);
-        //    return apiResponse;
-        //}
-
-        //public Person GetPerson(string name)
-        //{
-        //    Person person = new Person();
-
-        //    var response = GetPersonData(($"people/?search={name}"));
-        //    foreach (var p in response.Data.Results)
-        //    {
-        //        if (p.Name == name)
-        //        { 
-        //            return p;
-        //        }
-        //    }
-        //    return null;
-        //}
-
     }
 }
