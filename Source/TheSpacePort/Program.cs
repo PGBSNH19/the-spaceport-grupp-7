@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TheSpacePort
@@ -7,33 +8,44 @@ namespace TheSpacePort
     {
         static void Main(string[] args)
         {
+            var personDictionary = new Dictionary<int, Person>();
 
         Start:
 
             
 
-            Console.WriteLine("Hello to the SpacePort!");
-            Console.WriteLine("Please type your name and hit enter");
+            //Console.WriteLine("Hello to the SpacePort!");
+            //Console.WriteLine("Please type your name and hit enter");
 
-            string traveller = Console.ReadLine();
-            Console.WriteLine($"So you are: {traveller}?");
-            Console.WriteLine("(Y) Yes (N) No");
-            var yesOrNo = Console.ReadKey().Key;
+            //string traveller = Console.ReadLine();
+            //Console.WriteLine($"So you are: {traveller}?");
+            //Console.WriteLine("(Y) Yes (N) No");
+            //var yesOrNo = Console.ReadKey().Key;
 
             API api = new API();
             Person person = new Person();
             Starship starship = new Starship();
 
-            if (yesOrNo == ConsoleKey.Y)
-            {
-                 person = api.GetPerson(traveller);
-                 starship = api.GetStarship(person.Starships[0]);
-                Console.WriteLine(starship.Name);
-            }
+            //if (yesOrNo == ConsoleKey.Y)
+            //{
+            //     person = api.GetPerson(traveller);
+            //     starship = api.GetStarship(person.Starships[0]);
+            //     Console.WriteLine(starship.Name);
+            //}
 
-            else
-                goto Start;
+            //else
+            //    goto Start;
+            int idCount = 1;
+            person = api.GetPerson("Luke Skywalker");
+            person.PersonID = idCount;
+            starship = api.GetStarship(person.Starships[0]);
+            person.starship = starship;
+            person.starship.StarshipID = idCount;
 
+            idCount++;
+
+            SpacePort spacePort = new SpacePort();
+            spacePort.CreateParkings(4);
 
             Console.ReadKey();
 

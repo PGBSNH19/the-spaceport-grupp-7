@@ -10,14 +10,8 @@ namespace TheSpacePort
         public int StarshipID { get; set; }
         public int ParkingCost { get; set; }
         public int ParkingSpaceLength { get; set; }
-
-        static void ParkStarship()
-        {
-
-        }
-        static void CheckStarshipLength()
-        {
-
-        }
+        
+       
     }
+
 }

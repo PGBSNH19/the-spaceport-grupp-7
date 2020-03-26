@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace TheSpacePort
@@ -8,8 +9,9 @@ namespace TheSpacePort
     {
         public int PersonID { get; set; }
         public string Name { get; set; }
-        public int Height { get; set; }
         public Starship starship { get; set; }
+
+        [NotMapped]
         public List<string> Starships { get; set; }
         
     }
