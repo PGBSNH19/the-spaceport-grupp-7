@@ -47,35 +47,56 @@ namespace TheSpacePort
             person.Starship = starship;
 
             _myContext.persons.Add(person);
-            var parking = _myContext.parkings.Find(1);
+            
+
+            //kolla om skeppet får plats, kan läggas i egen metod? eller inte?
+            //starship.Length = 41;
+
+            var parking = _myContext.parkings.Where(x => x.ParkingSpaceLength > starship.Length).FirstOrDefault();
+
+            if(parking == null)
+            {
+                Console.WriteLine("Sorry, your ship is too big! You can't park here! Hope you find some other parkinglot! Bye!");
+                Environment.Exit(0);
+            }
+                
             parking.Starship = person.Starship;
+            
+            //kanske try catch på egentligen alla savechanges?
             _myContext.SaveChanges();
 
+
+            Console.WriteLine("You have successfully checked in! We're glad to have you here!");
+            Console.WriteLine("Press any key to get back to the menu.");
             Console.ReadKey();
         }
 
         public void CheckOut()
         {
+            Console.WriteLine("Please type your name and hit enter");
+            string traveller = Console.ReadLine();
             //get the person, 
             //from person get starship
             //from starship get parkingID
 
-            //var parking = _myContext.parkings.Find(1);
-            //parking.Starship = null;
-            //parking.StarshipID = null;
-
-            var person = _myContext.persons.Where(x => x.Name == "Chewbacca").FirstOrDefault();
+            var person = _myContext.persons.Where(x => x.Name == traveller).FirstOrDefault();
             var starship = _myContext.starships.Where(x => x.StarshipID == person.StarshipID).FirstOrDefault();
             var parking = _myContext.parkings.Where(x => x.StarshipID == starship.StarshipID).FirstOrDefault();
             parking.Starship = null;
             parking.StarshipID = null;
 
-            _myContext.SaveChanges();
+            // _myContext.SaveChanges();
 
             _myContext.starships.Remove(starship);
             _myContext.persons.Remove(person);
 
             _myContext.SaveChanges();
+
+            //payment metod som kollar pris från databas 
+
+            Console.WriteLine("You have successfully checked out! Hope to see you soon, again!");
+            Console.WriteLine("Press any key to get back to the menu.");
+            Console.ReadKey();
         }
 
         public static void Quit()
@@ -85,6 +106,7 @@ namespace TheSpacePort
 
         public async Task CreateParkings(int parkingAmount)
         {
+            //test för att se att hur man skulle ta bort en parkering och savechanges med asynch
             //var x = _myContext.parkings.Find(2);
             //_myContext.parkings.Remove(new Parking() { ParkingID = 5 });
 
