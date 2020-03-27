@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TheSpacePort
@@ -17,9 +18,8 @@ namespace TheSpacePort
         {
             var t = CreateParkings(4);
             t.Wait();
-
-
         }
+
         internal void Run()
         {
             Menu menu = new Menu(this);
@@ -47,17 +47,24 @@ namespace TheSpacePort
             person.Starship = starship;
 
             _myContext.persons.Add(person);
-            
+
 
             //kolla om skeppet får plats, kan läggas i egen metod? eller inte?
             //starship.Length = 41;
+            //if (_myContext.parkings.Where(x => x.StarshipID.Equals(null))
+            //    {
+
+            //}
+            var freeParking = _myContext.parkings.Where(x => x.StarshipID.Equals(null));
 
             var parking = _myContext.parkings.Where(x => x.ParkingSpaceLength > starship.Length).FirstOrDefault();
 
             if(parking == null)
             {
                 Console.WriteLine("Sorry, your ship is too big! You can't park here! Hope you find some other parkinglot! Bye!");
-                Environment.Exit(0);
+                Thread.Sleep(2000);
+                Console.Clear();
+                Run();
             }
                 
             parking.Starship = person.Starship;
@@ -106,12 +113,6 @@ namespace TheSpacePort
 
         public async Task CreateParkings(int parkingAmount)
         {
-            //test för att se att hur man skulle ta bort en parkering och savechanges med asynch
-            //var x = _myContext.parkings.Find(2);
-            //_myContext.parkings.Remove(new Parking() { ParkingID = 5 });
-
-            //await _myContext.SaveChangesAsync();
-
 
             if (_myContext.parkings.Count() < parkingAmount)
             {
