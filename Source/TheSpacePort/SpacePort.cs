@@ -34,6 +34,15 @@ namespace TheSpacePort
 
         public void CheckIn()
         {
+
+            var parking = _myContext.parkings.Where(x => x.StarshipID == null).FirstOrDefault();
+            if (parking == null)
+            {
+                Console.WriteLine("Sorry, we are full. Pleace come back at another time.");
+                Thread.Sleep(2000);
+                return;
+            }
+
             Console.WriteLine("Please type your name and hit enter");
             string traveller = Console.ReadLine();
 
@@ -49,22 +58,12 @@ namespace TheSpacePort
             _myContext.persons.Add(person);
 
 
-            //kolla om skeppet får plats, kan läggas i egen metod? eller inte?
-            //starship.Length = 41;
-            //if (_myContext.parkings.Where(x => x.StarshipID.Equals(null))
-            //    {
-
-            //}
-            var freeParking = _myContext.parkings.Where(x => x.StarshipID.Equals(null));
-
-            var parking = _myContext.parkings.Where(x => x.ParkingSpaceLength > starship.Length).FirstOrDefault();
-
-            if(parking == null)
+            if(parking.ParkingSpaceLength <= starship.Length)
             {
                 Console.WriteLine("Sorry, your ship is too big! You can't park here! Hope you find some other parkinglot! Bye!");
                 Thread.Sleep(2000);
                 Console.Clear();
-                Run();
+                return;
             }
                 
             parking.Starship = person.Starship;
@@ -105,6 +104,11 @@ namespace TheSpacePort
             Console.WriteLine("Press any key to get back to the menu.");
             Console.ReadKey();
         }
+
+        //public void Payment()
+        //{
+        //    var cost = _myContext.parkings.Where(x => x.ParkingCost);
+        //}
 
         public static void Quit()
         {
