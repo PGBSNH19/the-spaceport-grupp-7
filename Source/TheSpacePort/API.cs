@@ -28,7 +28,15 @@ namespace TheSpacePort
         {
             var dataResponse = GetPersonData(name);
             var data = JsonConvert.DeserializeObject<SwapiPersonResponse>(dataResponse.Result.Content);
+            try
+            {
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             if(data.Results[0].Name == name)
                 return data.Results[0];
             else

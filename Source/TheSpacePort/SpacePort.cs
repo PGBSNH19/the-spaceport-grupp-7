@@ -23,7 +23,7 @@ namespace TheSpacePort
         internal void Run()
         {
             Menu menu = new Menu(this);
-            
+
             while (true)
             {
                 menu.MenuHeader();
@@ -44,7 +44,14 @@ namespace TheSpacePort
             }
 
             Console.WriteLine("Please type your name and hit enter");
+            
             string traveller = Console.ReadLine();
+           
+
+
+         
+
+
 
             API api = new API();
             Person person = new Person();
@@ -58,16 +65,16 @@ namespace TheSpacePort
             _myContext.persons.Add(person);
 
 
-            if(parking.ParkingSpaceLength <= starship.Length)
+            if (parking.ParkingSpaceLength <= starship.Length)
             {
                 Console.WriteLine("Sorry, your ship is too big! You can't park here! Hope you find some other parkinglot! Bye!");
                 Thread.Sleep(2000);
                 Console.Clear();
                 return;
             }
-                
+
             parking.Starship = person.Starship;
-            
+
             //kanske try catch på egentligen alla savechanges?
             _myContext.SaveChanges();
 
@@ -122,7 +129,7 @@ namespace TheSpacePort
             {
                 var createNrOfParkings = parkingAmount - _myContext.parkings.Count();
 
-                
+
 
                 for (int i = 1; i <= createNrOfParkings; i++)
                 {
