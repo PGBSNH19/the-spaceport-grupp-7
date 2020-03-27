@@ -28,21 +28,21 @@ namespace TheSpacePort
         {
             var dataResponse = GetPersonData(name);
             var data = JsonConvert.DeserializeObject<SwapiPersonResponse>(dataResponse.Result.Content);
-            try
-            {
 
-            }
-            catch (Exception)
+            if (data.Results.Count == 0)
             {
-
-                throw;
+                return null;
             }
-            if(data.Results[0].Name == name)
+
+            else if(data.Results[0].Name == name)
+            {
                 return data.Results[0];
+            }
+            
             else
-                Console.WriteLine("Sorry, you're not in any Star Wars movie... This is not the parking you're looking for!.");
-
-            return null;
+            {
+                return null;
+            }
         }
 
         public async Task<IRestResponse> GetStarshipData(string URL)

@@ -46,9 +46,14 @@ namespace TheSpacePort
             Console.WriteLine("Please type your name and hit enter");
             
             string traveller = Console.ReadLine();
-           
 
 
+            if (traveller == "")
+            {
+                Console.WriteLine("Input was empty, please try again.");
+                Thread.Sleep(2000);
+                return;
+            }
          
 
 
@@ -58,6 +63,14 @@ namespace TheSpacePort
             Starship starship = new Starship();
 
             person = api.GetPerson(traveller);
+
+            if (person == null)
+            {
+                Console.WriteLine(traveller + " is not a part of any Star Wars movie.");
+                Thread.Sleep(2000);
+                return;
+            }
+
             starship = api.GetStarship(person.Starships[0]);
             Console.WriteLine(starship.Name);
             person.Starship = starship;
@@ -93,6 +106,14 @@ namespace TheSpacePort
             //from starship get parkingID
 
             var person = _myContext.persons.Where(x => x.Name == traveller).FirstOrDefault();
+
+            if (person == null)
+            {
+                Console.WriteLine(traveller + " is not parked here.");
+                Thread.Sleep(2000);
+                return;
+            }
+
             var starship = _myContext.starships.Where(x => x.StarshipID == person.StarshipID).FirstOrDefault();
             var parking = _myContext.parkings.Where(x => x.StarshipID == starship.StarshipID).FirstOrDefault();
             parking.Starship = null;
