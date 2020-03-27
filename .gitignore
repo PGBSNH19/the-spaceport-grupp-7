@@ -348,3 +348,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+Source/TheSpacePort/appsettings.dev.json
+Source/TheSpacePort/appsettings .dev.json
+Source/TheSpacePort/appsettings.Development.json
+Source/TheSpacePort.db/appsettings.Development.json

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TheSpacePort": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "SettingEnvironment": "dev"
+      }
+    }
+  }
+}
