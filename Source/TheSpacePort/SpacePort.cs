@@ -119,7 +119,17 @@ namespace TheSpacePort
             parking.Starship = null;
             parking.StarshipID = null;
 
-            // _myContext.SaveChanges();
+
+            try
+            {
+            _myContext.SaveChanges();
+
+            }
+            catch (Exception)
+            {
+
+                throw new Exception();
+            }
 
             _myContext.starships.Remove(starship);
             _myContext.persons.Remove(person);
@@ -127,16 +137,20 @@ namespace TheSpacePort
             _myContext.SaveChanges();
 
             //payment metod som kollar pris från databas 
-
-            Console.WriteLine("You have successfully checked out! Hope to see you soon, again!");
+            Payment(parking);
+            Console.WriteLine("You have successfully checked out: " + starship.Name + ". Hope to see you soon, again!");
+            
             Console.WriteLine("Press any key to get back to the menu.");
             Console.ReadKey();
         }
 
-        //public void Payment()
-        //{
-        //    var cost = _myContext.parkings.Where(x => x.ParkingCost);
-        //}
+        public void Payment(Parking parking)
+        {
+            var correctParking = _myContext.parkings.Where(x => x.ParkingID == parking.ParkingID).SingleOrDefault();
+
+            Console.WriteLine("This is your receipt: ");
+            Console.WriteLine("You have now paid " + correctParking.ParkingCost);
+        }
 
         public static void Quit()
         {
@@ -161,16 +175,6 @@ namespace TheSpacePort
 
                 await _myContext.SaveChangesAsync();
             }
-        }
-
-
-        static void ParkStarship()
-        {
-
-        }
-        static void CheckStarshipLength()
-        {
-
         }
     }
 }
