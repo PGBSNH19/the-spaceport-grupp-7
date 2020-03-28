@@ -105,6 +105,7 @@ namespace TheSpacePort
 
         public void CheckOut()
         {
+            Console.WriteLine("");
             Console.WriteLine("Please type your name and hit enter");
             string traveller = Console.ReadLine();
 
