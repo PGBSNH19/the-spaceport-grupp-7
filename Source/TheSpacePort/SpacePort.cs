@@ -10,9 +10,9 @@ namespace TheSpacePort
     public class SpacePort
     {
         private SpacePortContext _myContext = new SpacePortContext();
-        private int _spacePortID { get; set; }
-        private int _availableParking { get; set; }
-        private List<Parking> _parkings { get; set; }
+        //private int _spacePortID { get; set; }
+        //private int _availableParking { get; set; }
+        //private List<Parking> _parkings { get; set; }
 
         public SpacePort()
         {
@@ -54,9 +54,7 @@ namespace TheSpacePort
                 Thread.Sleep(2000);
                 return;
             }
-         
-
-
+    
 
             API api = new API();
             Person person = new Person();
@@ -118,18 +116,6 @@ namespace TheSpacePort
             var parking = _myContext.parkings.Where(x => x.StarshipID == starship.StarshipID).FirstOrDefault();
             parking.Starship = null;
             parking.StarshipID = null;
-
-
-            //try
-            //{
-            //_myContext.SaveChanges();
-
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw new Exception();
-            //}
 
             _myContext.starships.Remove(starship);
             _myContext.persons.Remove(person);
