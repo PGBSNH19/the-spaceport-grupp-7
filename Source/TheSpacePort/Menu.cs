@@ -56,7 +56,7 @@ namespace TheSpacePort
                     break;
 
                 case ConsoleKey.D3:
-                    SpacePort.Quit();
+                    _spacePort.Quit();
                     break;
 
                 default:
