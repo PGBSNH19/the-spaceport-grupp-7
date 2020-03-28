@@ -103,6 +103,8 @@ namespace TheSpacePort
             //from person get starship
             //from starship get parkingID
 
+            
+
             var person = _myContext.persons.Where(x => x.Name == traveller).FirstOrDefault();
 
             if (person == null)
