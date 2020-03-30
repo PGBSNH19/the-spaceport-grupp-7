@@ -7,12 +7,11 @@ using System.IO;
 
 namespace TheSpacePort
 {
-    public class MyContext : DbContext
+    public class SpacePortContext : DbContext
     {
         public DbSet<Parking> parkings { get; set; }
-        public DbSet<Person> people { get; set; }
-        public DbSet<Vehicle> vehicles { get; set; }
-        public DbSet<SpacePort> spacePorts { get; set; }
+        public DbSet<Person> persons { get; set; }
+        public DbSet<Starship> starships { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

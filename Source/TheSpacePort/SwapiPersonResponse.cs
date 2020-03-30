@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace TheSpacePort
 {
-    public class SwapiResponse
+    public class SwapiPersonResponse
     {
-        public IEnumerable<Person> Results { get; set; }
+        public List<Person> Results { get; set; }
+
     }
 }
