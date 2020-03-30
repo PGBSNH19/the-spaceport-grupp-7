@@ -12,7 +12,7 @@ namespace TheSpacePort
             _spacePort = spacePort;
         }
 
-        // Spy: @Group 3, Found the great idea with menuheader and also menu options
+        // Spy: @Group 3, Found the idea with a menuheader and also menu options
         public void MenuHeader()
         {
             Console.Title = "SpacePark";
@@ -38,7 +38,6 @@ namespace TheSpacePort
 
         public void MenuOptions()
         {
-            //ha logik för att kolla om parkeringen är full
             
             Console.WriteLine("Options:");
             Console.WriteLine("(1) Check in (2) Check out (3) Quit");

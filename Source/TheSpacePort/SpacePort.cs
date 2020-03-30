@@ -88,7 +88,7 @@ namespace TheSpacePort
             if (parking.ParkingSpaceLength <= starship.Length)
             {
                 Console.WriteLine("Sorry, your ship is too big! You can't park here! Hope you find some other parkinglot! Bye!");
-                Thread.Sleep(2000);
+                Thread.Sleep(3500);
                 Console.Clear();
                 return;
             }
